@@ -1,0 +1,23 @@
+.table-input {
+    min-width: 60px;
+    text-align: center;
+    padding: 0.25rem;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1rem;
+}
+
+.table th {
+    font-size: 0.875rem;
+}
+
+.table td {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}

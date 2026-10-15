@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Gráficos de Análise</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5>Dispersão da Geração Solar</h5>
+            </div>
+            <div class="card-body">
+                {% if chart_url %}
+                    <img src="{{ chart_url }}" alt="Gráfico de Dispersão" class="img-fluid">
+                {% else %}
+                    <p class="text-muted">Não há dados suficientes para gerar o gráfico.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5>Estatísticas</h5>
+            </div>
+            <div class="card-body">
+                <p>O gráfico mostra a dispersão da geração mensal, excluindo meses com geração zerada.</p>
+                <ul>
+                    <li>Pontos azuis: Geração mensal em kWh</li>
+                    <li>Linha vermelha: Média da geração</li>
+                    <li>Eixo X: Meses com geração válida</li>
+                    <li>Eixo Y: Quantidade de energia gerada</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

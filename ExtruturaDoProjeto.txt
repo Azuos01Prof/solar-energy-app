@@ -1,0 +1,15 @@
+solar_energy_app/
+├── app.py
+├── templates/
+│   ├── base.html
+│   ├── cliente.html
+│   ├── tabelas.html
+│   ├── graficos.html
+│   └── referencias.html
+├── static/
+│   ├── style.css
+│   └── script.js
+├── data/
+│   ├── monitoracao.csv
+│   └── consumo.csv
+└── uploads/

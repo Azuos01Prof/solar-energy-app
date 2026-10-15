@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Dados do Cliente e Projeto</h2>
+        
+        <form method="POST">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Dados do Cliente</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label class="form-label">Rua/Avenida</label>
+                            <input type="text" class="form-control" name="rua" 
+                                   value="{{ cliente.endereco.rua }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Número</label>
+                            <input type="text" class="form-control" name="numero" 
+                                   value="{{ cliente.endereco.numero }}">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Bairro</label>
+                            <input type="text" class="form-control" name="bairro" 
+                                   value="{{ cliente.endereco.bairro }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">CEP</label>
+                            <input type="text" class="form-control" name="cep" 
+                                   value="{{ cliente.endereco.cep }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Telefone</label>
+                            <input type="text" class="form-control" name="telefone" 
+                                   value="{{ cliente.telefone }}">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" 
+                                   value="{{ cliente.endereco.cidade }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Estado</label>
+                            <input type="text" class="form-control" name="estado" 
+                                   value="{{ cliente.endereco.estado }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Dados da Planta Solar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label">Marca do Inversor</label>
+                            <input type="text" class="form-control" name="inversor_marca" 
+                                   value="{{ cliente.planta.inversor_marca }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Modelo do Inversor</label>
+                            <input type="text" class="form-control" name="inversor_modelo" 
+                                   value="{{ cliente.planta.inversor_modelo }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Capacidade (kW)</label>
+                            <input type="text" class="form-control" name="inversor_capacidade" 
+                                   value="{{ cliente.planta.inversor_capacidade }}">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Marca dos Módulos</label>
+                            <input type="text" class="form-control" name="modulo_marca" 
+                                   value="{{ cliente.planta.modulo_marca }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Modelo dos Módulos</label>
+                            <input type="text" class="form-control" name="modulo_modelo" 
+                                   value="{{ cliente.planta.modulo_modelo }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Capacidade Total (kWp)</label>
+                            <input type="text" class="form-control" name="modulo_capacidade" 
+                                   value="{{ cliente.planta.modulo_capacidade }}">
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Direção</label>
+                            <input type="text" class="form-control" name="direcao" 
+                                   value="{{ cliente.planta.direcao }}" 
+                                   placeholder="Ex: Norte">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Inclinação</label>
+                            <input type="text" class="form-control" name="inclinacao" 
+                                   value="{{ cliente.planta.inclinacao }}" 
+                                   placeholder="Ex: 30°">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Mês Instalação</label>
+                            <input type="text" class="form-control" name="mes_instalacao" 
+                                   value="{{ cliente.planta.mes_instalacao }}">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Ano Instalação</label>
+                            <input type="text" class="form-control" name="ano_instalacao" 
+                                   value="{{ cliente.planta.ano_instalacao }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar Dados</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

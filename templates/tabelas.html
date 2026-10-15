@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Tabelas de Dados</h2>
+        
+        <!-- Upload de Arquivos -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Upload de Arquivos</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Arquivo de Monitoração</label>
+                            <input type="file" class="form-control" name="file" accept=".csv">
+                            <input type="hidden" name="file_type" value="monitoracao">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Arquivo de Consumo (CPFL)</label>
+                            <input type="file" class="form-control" name="file" accept=".pdf,.csv">
+                            <input type="hidden" name="file_type" value="consumo">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Upload</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabela de Monitoração -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Monitoração - Últimos 60 Meses</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm" id="monitoracao-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Ano/Mês</th>
+                                <th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                                <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ano, meses in monitoracao.items() %}
+                            <tr>
+                                <td class="fw-bold">{{ ano }}</td>
+                                {% for mes in meses %}
+                                <td>
+                                    <input type="text" class="form-control form-control-sm table-input" 
+                                           data-ano="{{ ano }}" data-mes="{{ loop.index0 }}" 
+                                           value="{{ mes if mes != '' else '' }}">
+                                </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-success mt-2" onclick="saveTable('monitoracao')">
+                    Salvar Monitoração
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabelas de Consumo e Injeção -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Consumo - Últimos 13 Meses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm" id="consumo-table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Ano</th>
+                                        <th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                                        <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ano, meses in consumo.items() %}
+                                    <tr>
+                                        <td class="fw-bold">{{ ano }}</td>
+                                        {% for mes in meses %}
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm table-input" 
+                                                   data-ano="{{ ano }}" data-mes="{{ loop.index0 }}" 
+                                                   value="{{ mes if mes != '' else '' }}">
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Injeção - Últimos 13 Meses</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm" id="injecao-table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Ano</th>
+                                        <th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th>
+                                        <th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ano, meses in injecao.items() %}
+                                    <tr>
+                                        <td class="fw-bold">{{ ano }}</td>
+                                        {% for mes in meses %}
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm table-input" 
+                                                   data-ano="{{ ano }}" data-mes="{{ loop.index0 }}" 
+                                                   value="{{ mes if mes != '' else '' }}">
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-success mt-2" onclick="saveTable('consumo')">
+                            Salvar Consumo/Injeção
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
